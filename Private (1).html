@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incognito Mode</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+        .incognito {
+            background: #121212;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon {
+            font-size: 80px;
+        }
+        .toggle-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #444;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .browser {
+            width: 80%;
+            height: 400px;
+            background: white;
+            color: black;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="icon">🕶️</div>
+        <h1>You're in Incognito Mode</h1>
+        <p>Your browsing activity won't be saved here.</p>
+        <button class="toggle-button" onclick="toggleIncognito()">Exit Incognito</button>
+        <div class="browser" contenteditable="true">Start browsing here...</div>
+    </div>
+    <script>
+        function toggleIncognito() {
+            document.body.classList.toggle("incognito");
+            let button = document.querySelector(".toggle-button");
+            if (document.body.classList.contains("incognito")) {
+                button.textContent = "Exit Incognito";
+            } else {
+                button.textContent = "Enter Incognito";
+            }
+        }
+    </script>
+</body>
+</html>
