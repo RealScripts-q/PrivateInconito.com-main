@@ -40,6 +40,21 @@
             padding: 10px;
             border-radius: 5px;
             overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .url-bar {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
         }
     </style>
 </head>
@@ -49,7 +64,10 @@
         <h1>You're in Incognito Mode</h1>
         <p>Your browsing activity won't be saved here.</p>
         <button class="toggle-button" onclick="toggleIncognito()">Exit Incognito</button>
-        <div class="browser" contenteditable="true">Start browsing here...</div>
+        <div class="browser">
+            <input type="text" class="url-bar" id="url" placeholder="Enter URL and press Enter" onkeypress="handleKeyPress(event)">
+            <iframe id="web-view" src="https://www.example.com"></iframe>
+        </div>
     </div>
     <script>
         function toggleIncognito() {
@@ -59,6 +77,16 @@
                 button.textContent = "Exit Incognito";
             } else {
                 button.textContent = "Enter Incognito";
+            }
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                let url = document.getElementById("url").value;
+                if (!url.startsWith("http")) {
+                    url = "https://" + url;
+                }
+                document.getElementById("web-view").src = url;
             }
         }
     </script>
